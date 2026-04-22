@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcelo Assis - Desenvolvedor JavaScript Full-Stack</title>
+    <meta name="description"
+        content="Portfolio de Marcelo Assis - Desenvolvedor JavaScript Full-Stack. Construindo plataformas SaaS com React, Next.js, NestJS e TypeScript.">
+    <meta name="author" content="Marcelo Assis">
+    <link rel="canonical" href="https://marceloassis.js.org/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Marcelo Assis - Desenvolvedor JavaScript Full-Stack">
+    <meta property="og:description"
+        content="Portfolio de Marcelo Assis - Desenvolvedor JavaScript Full-Stack. Construindo plataformas SaaS com React, Next.js, NestJS e TypeScript.">
+    <meta property="og:url" content="https://marceloassis.js.org/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Marcelo Assis - Desenvolvedor JavaScript Full-Stack">
+    <meta name="twitter:description"
+        content="Portfolio de Marcelo Assis - Desenvolvedor JavaScript Full-Stack. Construindo plataformas SaaS com React, Next.js, NestJS e TypeScript.">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>M</text></svg>">
+</head>
+
+<body>
+    <header>
+        <div class="container nav">
+            <div class="logo">Marcelo Assis</div>
+            <ul class="nav-links">
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Marcelo Assis</h1>
+                <p class="subtitle">Desenvolvedor JavaScript Full-Stack</p>
+                <p class="description">
+                    Construo plataformas SaaS e produtos de IA com o ecossistema JavaScript
+                    &mdash; React, Next.js, NestJS e TypeScript. Especializado em transformar
+                    ideias em produtos escaláveis que impactam milhares de usuários.
+                </p>
+                <div class="cta-group">
+                    <a class="btn btn-primary" href="https://marceloassis.com.br/" target="_blank" rel="noopener">
+                        Portfolio pessoal
+                    </a>
+                    <a class="btn btn-secondary" href="https://github.com/MarceloAssis123" target="_blank"
+                        rel="noopener">
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Projetos em JavaScript</h2>
+                    <p>Plataformas SaaS construídas com React, Next.js, NestJS e o ecossistema JavaScript moderno.</p>
+                </div>
+                <div id="projects-grid" class="projects-grid" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section id="contato">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Vamos construir algo incrível em JavaScript?</h2>
+                    <p>Aberto a colaborações, parcerias e projetos open source no ecossistema JS.</p>
+                </div>
+                <div class="contact-links">
+                    <a class="btn btn-primary" href="https://marceloassis.com.br/" target="_blank" rel="noopener">
+                        Portfolio pessoal
+                    </a>
+                    <a class="btn btn-secondary" href="https://github.com/MarceloAssis123" target="_blank"
+                        rel="noopener">
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Marcelo Assis. Portfolio profissional - Desenvolvedor Full-Stack &
+                Empreendedor SaaS.</p>
+        </div>
+    </footer>
+
+    <script src="business.js"></script>
+    <script>
+        (function renderProjetos() {
+            const grid = document.getElementById('projects-grid');
+            if (!grid || typeof business === 'undefined') return;
+
+            const fragment = document.createDocumentFragment();
+            business.forEach(function (e) {
+                const a = document.createElement('a');
+                a.href = e.Website;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.className = 'card';
+                a.setAttribute('aria-label', 'Abrir site de ' + e.Name);
+
+                const img = document.createElement('img');
+                img.src = e.Logo;
+                img.alt = e.Name + ' logo';
+                img.loading = 'lazy';
+
+                const span = document.createElement('span');
+                span.textContent = e.Name;
+
+                a.appendChild(img);
+                a.appendChild(span);
+                fragment.appendChild(a);
+            });
+            grid.appendChild(fragment);
+        })();
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
